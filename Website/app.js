@@ -1,11 +1,12 @@
 const baseURL="http://api.openweathermap.org/data/2.5/weather?";
 const apiKey = "&appid=e290b09f9a8816e3568a9e40b1fb9ef3&units=imperial";
 
-document.getElementById('generate').addEventListener('click',generateZip());
+
+document.getElementById('generate').addEventListener('click',generateZip);
 
 function generateZip(){
     const zip=document.getElementById('zip').value;
-    const url = baseURL+"zip="+zip+",us&units=imperial&appid="+apiKey;
+    const url = baseURL+"zip="+zip+apiKey;
     getWeatherInfo(url)
     //after data recived from API then store data(post data) in server
     .then(function(data){
@@ -19,7 +20,7 @@ function generateZip(){
 };
 
 //Get weather information from weather api using url
-const getWeatherInfo = async(url) =>{
+const getWeatherInfo = async (url) =>{
 
     const res = await fetch(url)
     try{
